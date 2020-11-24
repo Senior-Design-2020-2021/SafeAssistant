@@ -2,6 +2,8 @@
 
 ## Group Information
 
+### Team Name: Safe Assistant
+
 ### Team
 
 - Ethan Hocker (CS) - hockereh@mail.uc.edu
