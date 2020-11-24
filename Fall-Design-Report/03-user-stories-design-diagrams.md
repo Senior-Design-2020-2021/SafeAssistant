@@ -14,13 +14,19 @@ Level 0
 
 ![Level 0](level0.png)
 
+The Level 0 diagram reflects the general flow of information from the user to the device. In this architecture, The only communication to the internet is done by installed applications which can be verified by the user. In addition, users can grant permission on an app by app basis.
+
 Level 1
 
 ![Level 1](level1.png)
 
+The Level 1 diagram reflects the control flow of the program, and indicates the major portions of the process, and where the code is being executed.
+
 Level 2
 
 ![Level 2](level2.png)
+
+The Level 2 diagram shows a more granular breakdown of the code components involved in the process. This details the way the assistant hub will route control to the various installed applications and communicate with the edge nodes. Additionally the dotted lines represent logical security relate boundaries. There will be security measures in place to protect and verify communication between the client, the server, and third party code.
 
 ---
 
