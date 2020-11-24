@@ -11,12 +11,15 @@
 ## Design Diagrams
 
 Level 0
+
 ![Level 0](level0.png)
 
 Level 1
+
 ![Level 1](level1.png)
 
 Level 2
+
 ![Level 2](level2.png)
 
 ---
