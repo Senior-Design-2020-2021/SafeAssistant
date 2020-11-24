@@ -24,4 +24,4 @@ Level 2
 
 ---
 
-[⭠ Previous Page]() | [Next Page ⭢](04-project-tasks-and-timeline.md)
+[⭠ Previous Page](02-project-description.md) | [Next Page ⭢](04-project-tasks-and-timeline.md)
