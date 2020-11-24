@@ -33,7 +33,7 @@ Each team member has spent 45-60 hours on the Safe Assistant project:
     - November 3, 5: 2 hours
     - November 10, 12: 2 hours
     - November 17, 19: 2 hours
-    - November 24, 26: 2 hours
+    - November 24, 27: 2 hours
     - December 1, 3: 2 hours
 - Individual research and engineering: 1-2 hours per week
 
