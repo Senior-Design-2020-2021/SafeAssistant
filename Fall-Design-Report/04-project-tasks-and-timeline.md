@@ -33,4 +33,4 @@
 
 ---
 
-[⭠ Previous Page](03-user-stories-and-design-diagrams.md) | [Next Page ⭢](06-ppt-slideshow.md)
+[⭠ Previous Page](03-user-stories-design-diagrams.md) | [Next Page ⭢](06-ppt-slideshow.md)
