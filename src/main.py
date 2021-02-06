@@ -5,7 +5,9 @@ import argparse
 from time import sleep, time
 from socket import socket, gethostbyname, gethostname, \
                    SOCK_DGRAM, SOL_SOCKET, SO_BROADCAST 
-
+#======================================================
+import modules
+import intent_handler
 #======================================================
 settings = {}
 with open("config.json", "r") as fd:
@@ -38,8 +40,14 @@ def runClient():
     sd.bind(('', 0))
 
     server = discover_server(sd)
-    send(sd, server, msg_type="data", content="hello this is a test")
+    send(sd, server, msg_type="data", content="what is the time")
+    socket.setblocking(False)
 
+    # client polling loop
+    while True:
+
+        msg, sender = read(sd)
+        log("got data: {}".format(msg))
 
 def discover_server(sd):
 
@@ -113,7 +121,12 @@ def runServer():
                     ## process application data
                     if msg['type'] == 'data':
                         log("got some data: {}".format(msg['content']))
-
+                        app_name = intent_handler.parse_request(msg['content'])
+                        if app_name == None:
+                            send(sd, sender, msg_type="data" content="Sorry I'm not sure what you're asking")
+                        else:
+                            res = modules.run_module(app_name msg['content'])
+                            send(sd, sender, msg_type="data", content=res)
                 else:
                     send(sd, sender, msg_type="auth reject", content="not authenticated")
             else:

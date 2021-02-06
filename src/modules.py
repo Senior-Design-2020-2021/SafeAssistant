@@ -22,9 +22,17 @@ def build_app_index():
                 }
                 app_index.append(module_info)
                 del module
-                
+
+        if not path.exists(path.dirname(settings['indexPath'])):
+            os.makedirs(path.dirname(settings['indexPath']))
+
         with open(settings['indexPath'], 'w') as fd:
             fd.write(json.dumps(app_index))
+
+def run_module(name, request):
+    module = importlib.import_module(name)
+    module.handle(request)
+    del module
 
 if __name__ == '__main__':
     build_app_index()
