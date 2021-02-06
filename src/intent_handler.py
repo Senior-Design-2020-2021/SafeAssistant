@@ -1,5 +1,7 @@
 import json
 import nltk
+nltk.download('stopwords')
+nltk.download('punkt')
 stop_words = set(nltk.corpus.stopwords.words('english'))  
 lemmatizer = nltk.stem.wordnet.WordNetLemmatizer()
 stemmer = nltk.PorterStemmer()
@@ -15,7 +17,7 @@ def parse_request(inputString):
     filteredInput = [w for w in inputTokens if not w in stop_words]  
     filteredInput = [stemmer.stem(w) for w in filteredInput]
 
-    with open('tmp/appindex.json') as f:
+    with open('tmp/appIndex.json') as f:
         applications = json.load(f)
 
     for app in applications:
