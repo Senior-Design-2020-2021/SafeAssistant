@@ -41,7 +41,6 @@ def runClient():
 
     server = discover_server(sd)
     send(sd, server, msg_type="data", content="what is the time")
-    socket.setblocking(False)
 
     # client polling loop
     while True:
@@ -123,9 +122,9 @@ def runServer():
                         log("got some data: {}".format(msg['content']))
                         app_name = intent_handler.parse_request(msg['content'])
                         if app_name == None:
-                            send(sd, sender, msg_type="data" content="Sorry I'm not sure what you're asking")
+                            send(sd, sender, msg_type="data", content="Sorry I'm not sure what you're asking")
                         else:
-                            res = modules.run_module(app_name msg['content'])
+                            res = modules.run_module(app_name, msg['content'])
                             send(sd, sender, msg_type="data", content=res)
                 else:
                     send(sd, sender, msg_type="auth reject", content="not authenticated")
