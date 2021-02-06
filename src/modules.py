@@ -1,7 +1,8 @@
 # manages applications
 import importlib
 import json
-from os import path, listdir
+from os import path, listdir makedirs
+
 
 settings = {'modulePath': "applications",
             'indexPath': "tmp/appIndex.json"
@@ -24,7 +25,7 @@ def build_app_index():
                 del module
 
         if not path.exists(path.dirname(settings['indexPath'])):
-            os.makedirs(path.dirname(settings['indexPath']))
+            makedirs(path.dirname(settings['indexPath']))
 
         with open(settings['indexPath'], 'w') as fd:
             fd.write(json.dumps(app_index))
