@@ -10,7 +10,7 @@ from socket import socket, gethostbyname, gethostname, \
 settings = {}
 with open("config.json", "r") as fd:
     settings = json.loads(fd.read())
-    settings["IP_ADDR"] = gethostbyname(gethostname())
+    # settings["IP_ADDR"] = gethostbyname(gethostname())
 #======================================================
 CONFIG_PATH = "config.json"
 #======================================================
@@ -38,28 +38,26 @@ def runClient():
     sd.bind(('', 0))
 
     server = discover_server(sd)
-    send(sd, "DATA: hello this is a test", server)
+    send(sd, server, msg_type="data", content="hello this is a test")
     
 
 def discover_server(sd):
 
     # client advertisement
     sd.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
-    send(sd, "CLIENT AVAILABLE", ('<broadcast>', settings['port']))
+    send(sd, ('<broadcast>', settings['port']), msg_type="connect")
     log("sent client advertisement")
 
     # turn off broadcast mode
     sd.setsockopt(SOL_SOCKET, SO_BROADCAST, 0)
     
-    data, sender = sd.recvfrom(1024)
-    log("received from {}: {}".format(sender, data))
+    msg, sender = read(sd)
 
-    if data.decode('utf-8').startswith("AUTH REQUEST"):
+    if msg['type'] == 'auth challenge':
         server = sender
         log("set server as {}".format(server))
-        send(sd, "AUTH: Blue", server)
-        data, sender = sd.recvfrom(1024)
-        log("received from {}: {}".format(sender, data))
+        send(sd, server, msg_type="auth reply", content="Blue")
+        data, sender = read(sd)
         return server
 
 
@@ -74,48 +72,69 @@ def runServer():
     while True:
         
         # Receive data
-        data, sender = sd.recvfrom(1024)
-        print("[SERVER] received from {}: {}".format(sender, data))
-        msg = data.decode('utf-8')
+        msg, sender = read(sd)
 
         #--------------------------
         # Parse message
         #--------------------------
 
         ## Client Advertisement
-        if msg.startswith("CLIENT AVAILABLE"):
+        if msg['type'] == "connect":
             nodes.update({sender:("challenged", time())})
-            send(sd, "AUTH REQUEST: what is your favorite color", sender) 
+            send(sd, sender, msg_type="auth challenge", content="what is your favorite color") 
 
         ## Client Response to Authentication request
-        elif msg.startswith("AUTH: "):
+        elif msg['type'] == "auth reply":
             if sender in nodes.keys():
                 status = nodes[sender]
                 if status[0] == "challenged" and time() - status[1] < settings['timeout']:
                     # highly secure authentication checks
-                    if data.decode('utf-8').split(' ')[1] == "Blue":
+                    if msg['content'] == "Blue":
                         # success
                         nodes[sender] = ('Authorized', time())
-                        log("added {} to list of Authorized clients".format(sender))
-                        send(sd, "AUTH ACCEPTED", sender)
+                        log("Added {} to list of authorized clients".format(sender))
+                        send(sd, sender, msg_type="auth accept")
                     else:
                         # invalid credentials
                         nodes.pop(sender)
                         log("denied authorization to {}".format(sender))
-                        send(sd, "AUTH DENIED: invalid credentials", sender)
+                        send(sd, sender, msg_type="auth reject", content='invalid credentials')
                 else:
                     # expired challenge
                     nodes.pop(sender)
-                    send(sd, "AUTH DENIED: expired challenge", sender)
+                    send(sd, sender, msg_type="auth reject", content="expired challenge")
 
-        ## application data
-        elif msg.startswith("DATA: "):
-            log("got some data: {}".format(msg[6:]))
+        ## if message is not an authentication message
+        else:
+            # check authentication
+            if sender in nodes.keys():
+                status = nodes[sender]
+                if status[0] == "Authorized" and time() - nodes[sender][1] < settings['timeout']:
+                    ## process application data
+                    if msg['type'] == 'data':
+                        log("got some data: {}".format(msg['content']))
 
-def send(sd, msg, dst):
+                else:
+                    send(sd, sender, msg_type="auth reject", content="not authenticated")
+            else:
+                send(sd, sender, msg_type="auth reject", content="not authenticated")
+
+def send(sd, dst, msg_type, content=None):
     """ a simple send function that incorporates loging"""
-    sd.sendto(msg.encode('utf-8'), dst)
-    log("sent to {}: {}".format(dst, msg))
+    data = {"type":msg_type, "content":content}
+    sd.sendto(json.dumps(data).encode('utf-8'), dst)
+    log("sent to {}: {}".format(dst, data))
+
+def read(sd):
+    """ 
+    a function that reads from the given socket, logs the data and 
+    returns a message object and a tuple representing the sender
+    """
+    data, sender = sd.recvfrom(1024)
+    msg = json.loads(data.decode('utf-8'))
+
+    log("received from {}: {}".format(sender, msg))
+    return msg, sender
 
 def log(message):
     """ for convenient reporting of app status"""
