@@ -127,6 +127,7 @@ def runServer():
                             send(sd, sender, msg_type="data", content="Sorry I'm not sure what you're asking")
                         else:
                             res = modules.run_module(app_name, msg['content'])
+                            log("res = {}".format(res))
                             send(sd, sender, msg_type="data", content=res)
                 else:
                     send(sd, sender, msg_type="auth reject", content="not authenticated")

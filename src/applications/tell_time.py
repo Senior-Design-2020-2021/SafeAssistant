@@ -4,7 +4,7 @@ import time
 # a simple app for testing purposes
 
 def handle(request):
-    return "The time is" + time.strftime("%I %M %p") + "."
+    return "The time is " + time.strftime("%I %M %p") + "."
 
 def canHandle():
     return [
