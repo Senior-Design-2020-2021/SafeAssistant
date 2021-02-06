@@ -19,6 +19,8 @@ CONFIG_PATH = "config.json"
 
 def startUp():
    
+    modules.build_app_index()
+
     if settings['mode'] == 'hub':
         pid = os.fork()
         if pid == 0:
