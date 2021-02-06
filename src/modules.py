@@ -1,20 +1,29 @@
 # manages applications
 import importlib
-from os import path listdir
+import json
+from os import path, listdir
 
-settings = {'ModulePath': "../modules"}
+settings = {'modulePath': "applications",
+            'indexPath': "tmp/appIndex.json"
+}
 
 def build_app_index():
-    if path.isdir(settings['ModulePath']):
+    
+    if path.isdir(settings['modulePath']):
         # get all python modules in ModulePath
         app_index = []
-        for path in listdir(settings['ModulePath'])
-            if ".py" in path:
-                module = importlib.import_module(path)
+        for fName in listdir(settings['modulePath']):
+            if ".py" in fName:
+                module_name = "applications." + fName.strip(".py")
+                module = importlib.import_module(module_name)
                 module_info = {
-                    'name': module.__name__
+                    'name': module.__name__,
                     'triggers': module.canHandle()
-
                 }
-                app_index.append()
-                
+                app_index.append(module_info)
+
+        with open(settings['indexPath'], 'w') as fd:
+            fd.write(json.dumps(app_index))
+
+if __name__ == '__main__':
+    build_app_index()

@@ -1,0 +1,4 @@
+/src/tmp/*
+*.swp
+*__pycache__/
+
