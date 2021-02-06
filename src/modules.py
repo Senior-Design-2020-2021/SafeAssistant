@@ -21,7 +21,8 @@ def build_app_index():
                     'triggers': module.canHandle()
                 }
                 app_index.append(module_info)
-
+                del module
+                
         with open(settings['indexPath'], 'w') as fd:
             fd.write(json.dumps(app_index))
 
