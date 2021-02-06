@@ -1,7 +1,7 @@
 # manages applications
 import importlib
 import json
-from os import path, listdir makedirs
+from os import path, listdir, makedirs
 
 
 settings = {'modulePath': "applications",
@@ -32,8 +32,9 @@ def build_app_index():
 
 def run_module(name, request):
     module = importlib.import_module(name)
-    module.handle(request)
+    res = module.handle(request)
     del module
+    return res
 
 if __name__ == '__main__':
     build_app_index()
