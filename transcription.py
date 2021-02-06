@@ -2,10 +2,9 @@ import subprocess
 import datetime
 import time
 
-recordCommand = "arecord -fdat -d 5 to_txt.wav"
-#recordCommand = "rec to_txt.wav silence 1 0.1 3% 1 3.0 3%"
-recording = subprocess.Popen(recordCommand, shell = True)
-time.sleep(6)
+#recordCommand = "arecord -fdat -d 5 to_txt.wav"
+recordCommand = "rec to_txt.wav silence 1 0.1 1% 1 3.0 1%"
+recording = subprocess.call(recordCommand, shell = True)
 
 firstCheckpoint = datetime.datetime.now()
 
