@@ -39,7 +39,7 @@ def runClient():
 
     server = discover_server(sd)
     send(sd, server, msg_type="data", content="hello this is a test")
-    
+
 
 def discover_server(sd):
 
