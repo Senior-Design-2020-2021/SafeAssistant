@@ -5,8 +5,8 @@ A guide for installing and using the Safe Assistant system
 ## Contents
 
 - [Installation Guide](#installation-guide)
-User Guide (link)
-FAQ (link)
+- [User Guide] (#user-guide)
+- [FAQ] (#faq)
 
 ## Installation Guide
 
