@@ -5,8 +5,8 @@ A guide for installing and using the Safe Assistant system
 ## Contents
 
 - [Installation Guide](#installation-guide)
-- [User Guide] (#user-guide)
-- [FAQ] (#faq)
+- [User Guide](#user-guide)
+- [FAQ](#faq)
 
 ## Installation Guide
 
@@ -14,7 +14,7 @@ Safe Assistant was designed to be highly configurable and adaptable to the userâ
 
 ### Set up Hardware
 
-Safe Assistant can run on any platform that supports Python 3, but we recommend using a unix based system such as a raspberry PI running ubuntu or similar. Instructions to set up a raspberry PI with ubuntu are included here(https://ubuntu.com/tutorials/how-to-install-ubuntu-desktop-on-raspberry-pi-4#1-overview). 
+Safe Assistant can run on any platform that supports Python 3, but we recommend using a unix based system such as a raspberry PI running ubuntu or similar. Instructions to set up a raspberry PI with ubuntu are included [here](https://ubuntu.com/tutorials/how-to-install-ubuntu-desktop-on-raspberry-pi-4#1-overview). 
 
 ### Set up Software
 
