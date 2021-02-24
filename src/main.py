@@ -8,6 +8,7 @@ from socket import socket, gethostbyname, gethostname, \
 #======================================================
 import modules
 import intent_handler
+from tts import _TTS
 #======================================================
 settings = {}
 with open("config.json", "r") as fd:
@@ -49,6 +50,15 @@ def runClient():
 
         msg, sender = read(sd)
         log("got data: {}".format(msg))
+        
+        if msg['type'] == 'data':
+            messageText = msg['content']
+            speakMessage(messageText)
+
+def speakMessage(messageText):
+    tts = _TTS()
+    tts.start(messageText)
+    del(tts)
 
 def discover_server(sd):
 
