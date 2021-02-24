@@ -3,7 +3,10 @@ import datetime
 import time
 
 #recordCommand = "arecord -fdat -d 5 to_txt.wav"
-recordCommand = "rec to_txt.wav silence 1 0.1 1% 1 3.0 1%"
+
+#time before speech is cutoff, whether user is speaking or not
+timeOut = 8
+recordCommand = "timeout " + str(timeOut) + "s rec to_txt.wav silence 1 0.1 1% 1 3.0 1%"
 recording = subprocess.call(recordCommand, shell = True)
 
 firstCheckpoint = datetime.datetime.now()
