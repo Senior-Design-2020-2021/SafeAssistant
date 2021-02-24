@@ -1,6 +1,6 @@
 Commands to install deepspeech binaries and models
 
-wget https://github.com/mozilla/DeepSpeech/releases/download/v0.6.1/native_client.arm64.cpu.linux.tar.xz
+wget https://github.com/mozilla/DeepSpeech/releases/download/v0.9.3/native_client.arm64.cpu.linux.tar.xz
 tar xvf ./native_client.arm64.cpu.linux.tar.xz
 curl -LO https://github.com/mozilla/DeepSpeech/releases/download/v0.9.3/deepspeech-0.9.3-models.tflite
 curl -LO https://github.com/mozilla/DeepSpeech/releases/download/v0.9.3/deepspeech-0.9.3-models.scorer

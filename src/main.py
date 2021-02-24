@@ -43,7 +43,10 @@ def runClient():
     sd.bind(('', 0))
 
     server = discover_server(sd)
-    send(sd, server, msg_type="data", content="what is the time")
+    
+    # Get User Voice Input
+    userVoice = transcribe()
+    send(sd, server, msg_type="data", content=userVoice)
 
     # client polling loop
     while True:
