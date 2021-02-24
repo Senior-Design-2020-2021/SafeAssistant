@@ -3,7 +3,7 @@ import importlib
 import json
 from os import path, listdir, makedirs
 
-
+active_module = None
 settings = {'modulePath': "applications",
             'indexPath': "tmp/appIndex.json"
 }
@@ -31,10 +31,20 @@ def build_app_index():
             fd.write(json.dumps(app_index))
 
 def run_module(name, request):
+
     module = importlib.import_module(name)
+    active_module = module
     res = module.handle(request)
-    del module
     return res
+
+def provide_input(request):
+    active_module.handle(request)
+
+def has_active():
+    return active_module != None:
+
+def close_module()
+    del module
 
 if __name__ == '__main__':
     build_app_index()
