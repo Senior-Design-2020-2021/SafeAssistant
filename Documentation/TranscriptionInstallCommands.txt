@@ -8,3 +8,6 @@ curl -LO https://github.com/mozilla/DeepSpeech/releases/download/v0.9.3/deepspee
 Command to install SoX for voice recording
 
 sudo apt-get install sox
+
+Google drive link with Snowboy Commands:
+https://docs.google.com/document/d/1E56sefgoLcRCGi0A1dBy8dyqGA1cvGj3WvzgQOsf2Xk/edit
