@@ -1,4 +1,4 @@
-# Table of Contents
+# Fall Design Report - Table of Contents
 
 1. [Project Description](01-project-description.md)
 2. [User Interface Specification](02-user-interface-specification.md)
