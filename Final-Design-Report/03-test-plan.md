@@ -1,6 +1,6 @@
 # Test Plan and Results'
 
-Below are our results from our test cases. To view the full test cases, click [here]((../Test%20Plan.pdf).
+Below are our results from our test cases. To view the full test cases, click [here](../Test%20Plan.pdf).
 
 ![Results](Results.png)
 
