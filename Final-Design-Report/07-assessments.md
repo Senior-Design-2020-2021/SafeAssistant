@@ -1,14 +1,16 @@
 # Self Assessments
 
 ## Fall Semester Assessments
-*[Ethan Hocker]()
-*[Alex Vennemeyer]()
-*[Brendan Link]()
+
+-[Ethan Hocker]()
+-[Alex Vennemeyer]()
+-[Brendan Link]()
 
 ## Spring Semester Assessments
-*[Ethan Hocker]()
-*[Alex Vennemeyer]()
-*[Brendan Link]()
+
+-[Ethan Hocker]()
+-[Alex Vennemeyer]()
+-[Brendan Link]()
 
 ---
 
