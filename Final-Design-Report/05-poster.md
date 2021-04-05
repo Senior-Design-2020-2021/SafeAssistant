@@ -1,3 +1,3 @@
 ## Expo Poster
 
-![Expo Poster](poster.png)
+![Expo Poster](Poster.png)
