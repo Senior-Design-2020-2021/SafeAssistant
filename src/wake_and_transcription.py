@@ -10,7 +10,8 @@ import time
 #https://github.com/Kitt-AI/snowboy
 
 interrupted = False
-
+model = "/home/brendan/Desktop/src/resources/models/computer.umdl"
+detector = snowboydecoder.HotwordDetector(model, sensitivity=0.5)
 
 def signal_handler(signal, frame):
     global interrupted
@@ -44,26 +45,23 @@ def transcription():
     voiceTranscription = voiceTranscribing.stdout.read()
     voiceTranscriptionProcessed = voiceTranscription.decode("utf-8")
     print(voiceTranscriptionProcessed)
+    
+    outFile = open("userText.txt","w")
+    outFile.write(voiceTranscriptionProcessed)
+    outFile.close()
+    
     print("Processed in " + str(processingTime.microseconds) + " microseconds.")
 
     print("finished")
+    
+    detector.terminate()
 
-if len(sys.argv) == 1:
-    print("Error: need to specify model name")
-    print("Usage: python demo.py your.model")
-    sys.exit(-1)
-
-model = sys.argv[1]
-
-# capture SIGINT signal, e.g., Ctrl+C
-signal.signal(signal.SIGINT, signal_handler)
-
-detector = snowboydecoder.HotwordDetector(model, sensitivity=0.5)
-print('Listening... Press Ctrl+C to exit')
-
-# main loop
-detector.start(detected_callback=transcription,
+def wakeDetection():
+    # capture SIGINT signal, e.g., Ctrl+C
+    signal.signal(signal.SIGINT, signal_handler)
+    print('Listening... Press Ctrl+C to exit')
+    # main loop
+    detector.start(detected_callback=transcription,
                interrupt_check=interrupt_callback,
                sleep_time=0.03)
-
-detector.terminate()
+    return "returned"
