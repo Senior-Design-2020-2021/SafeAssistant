@@ -1,3 +1,3 @@
 ## User Interface Specification
 
-![User Interface Specification](uispec.pdf)
+![User Interface Specification](UI%20Specification.png)
