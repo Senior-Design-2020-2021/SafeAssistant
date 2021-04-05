@@ -15,4 +15,4 @@
 
 ---
 
-[⭠ Previous Page](08-professional-biographies.md) | [Next Page ⭢](10-appendix.md)
+[⭠ Previous Page](08-hours.md)
