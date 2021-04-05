@@ -1,5 +1,19 @@
 # Project Description
 
+## Group Information
+
+### Team Name: Safe Assistant
+
+### Team
+
+- Ethan Hocker (CS) - hockereh@mail.uc.edu
+- Brendan Link (CS) - linkbd@mail.uc.edu
+- Alex Vennemeyer (CS) - vennemar@mail.uc.edu
+
+### Advisor
+
+- Dr. John Franco - Franco@ucmail.uc.edu
+
 ## Abstract
 Safe Assistant is a secure, private, and highly configurable Voice Assistant designed to operate and process speech entirely offline. It is open source, providing users transparency of the system and allowing users to easily add new applications or features.
 
