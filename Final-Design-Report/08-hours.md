@@ -35,9 +35,9 @@ Each team member has spent 45-60 hours on the Safe Assistant project:
     - April 5, 7: 2 hours
 - Individual research and engineering: 1-2 hours per week
 - In-person programming sessions: (18 hours logged)
+    - Feb 6: 6 hours
     - Feb 24: 6 hours
     - March 6: 6 hours
-    - March 13: 6 hours
 
 Total time per team member: 45-60 hours
 ---
