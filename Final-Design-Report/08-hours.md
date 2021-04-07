@@ -4,7 +4,7 @@
 
 Each team member has spent 45-60 hours on the Safe Assistant project:
 
-- Weekly team meetings (30 hours logged):
+- Weekly team meetings (56 hours logged):
     - August 25, 27: 2 hours
     - September 1, 3: 2 hours
     - September 8, 10: 2 hours
@@ -20,7 +20,24 @@ Each team member has spent 45-60 hours on the Safe Assistant project:
     - November 17, 19: 2 hours
     - November 24, 27: 2 hours
     - December 1, 3: 2 hours
+    - January 11, 13: 2 hours
+    - January 18, 19: 2 hours
+    - January 25, 27: 2 hours
+    - February 1, 3: 2 hours
+    - February 8, 10: 2 hours
+    - February 15, 17: 2 hours
+    - February 22, 24: 2 hours
+    - March 1, 3: 2 hours
+    - March 8, 10: 2 hours
+    - March 15, 17: 2 hours
+    - March 22, 24: 2 hours
+    - March 29, 31: 2 hours
+    - April 5, 7: 2 hours
 - Individual research and engineering: 1-2 hours per week
+- In-person programming sessions: (18 hours logged)
+    - Feb 24: 6 hours
+    - March 6: 6 hours
+    - March 13: 6 hours
 
 Total time per team member: 45-60 hours
 ---
