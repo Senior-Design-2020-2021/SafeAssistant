@@ -44,7 +44,7 @@ Total time per team member: 100-125 hours
 Total time for whole team: 300-350 hours
 ---
 
-#Justification
+# Justification
 The weekly meetings were used to plan our project and complete the assignments for the course. The in=person programming sessions allowed us to collaborate closely and combine the pieces of our project that we had worked on individually. These sessions also allowed us to test the system as a whole. 
 
 [⭠ Previous Page](07-assessments.md) | [Next Page ⭢](09-budget.md)
