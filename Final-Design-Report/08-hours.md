@@ -2,7 +2,7 @@
 
 ## Log of Hours of Work
 
-Each team member has spent 45-60 hours on the Safe Assistant project:
+Below is a log of each member's hours and the justification for where the hours were spent:
 
 - Weekly team meetings (56 hours logged):
     - August 25, 27: 2 hours
