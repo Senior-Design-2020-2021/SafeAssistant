@@ -8,7 +8,7 @@
 
 ## Spring Semester Assessments
 
-- [Ethan Hocker]()
+- [Ethan Hocker](../Homeworks/Spring%20Assessments/Hocker_Spring_Assessment.md)
 - [Alex Vennemeyer]()
 - [Brendan Link](../Homeworks/Spring%20Assessments/Self%20Assessment%20-%20Brendan%20Link.pdf)
 
