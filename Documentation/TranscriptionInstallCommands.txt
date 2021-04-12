@@ -9,5 +9,26 @@ Command to install SoX for voice recording
 
 sudo apt-get install sox
 
-Google drive link with Snowboy Commands:
-https://docs.google.com/document/d/1E56sefgoLcRCGi0A1dBy8dyqGA1cvGj3WvzgQOsf2Xk/edit
+Commands to install Snowboy and make wake_and_transcription.py runnable
+
+Step 1:- Install Python and pyaudio 
+“sudo apt-get install python3-pyaudio sox libpcre3 libpcre3-dev libatlas-base-dev && pip3 install pyaudio” 
+Step 2: Install swig Code converter Python to other language(c++) 
+“sudo apt-get install swig” 
+Step 3: Install Lib-Atlas 
+“sudo apt-get install libatlas-base-dev” 
+Step 4: Clone and Install 
+“git clone https://github.com/kitt-ai/snowboy​ && cd snowboy/swig/Python3” 
+
+Step5: move libsnowboy-detect.a in snowboy/lib/aarch64-ubuntu1604 into snowboy/lib/ubuntu64, replacing old file 
+Step 6: make
+
+Step 7: Copy files from "/snowboy/snowboy/swig/Python3" to same directory as wake_and_transcription.py 
+Step 8:Copy folder "resources" from /snowboy/snowboy to same directory as wake_and_transcription.py 
+Step 9: Copy file "snowboydecoder.py" from "/snowboy/snowboy/examples/Python3" to same directory as wake_and_transcription.py 
+
+Step 10: Remove "from *" line 5 of snowboydecoder.py
+
+To run: 
+“python3 wake_and_transcription.py <file_path_of_model>l” 
+
