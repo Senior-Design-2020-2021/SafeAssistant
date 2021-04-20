@@ -9,6 +9,7 @@ from socket import socket, gethostbyname, gethostname, \
 import modules
 import intent_handler
 from tts import _TTS
+from wake_and_transcription import wakeDetection
 #======================================================
 settings = {}
 with open("config.json", "r") as fd:
@@ -45,8 +46,12 @@ def runClient():
     server = discover_server(sd)
     
     # Get User Voice Input
-    userVoice = transcribe()
-    send(sd, server, msg_type="data", content=userVoice)
+    userVoice = wakeDetection()
+    f = open("userText.txt")
+    userText = f.read()
+    f.close()
+    
+    send(sd, server, msg_type="data", content=userText)
 
     # client polling loop
     while True:
@@ -69,7 +74,6 @@ def discover_server(sd):
     sd.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
     send(sd, ('<broadcast>', settings['port']), msg_type="connect")
     log("sent client advertisement")
-
     # turn off broadcast mode
     sd.setsockopt(SOL_SOCKET, SO_BROADCAST, 0)
     
@@ -136,6 +140,7 @@ def runServer():
                     if msg['type'] == 'data':
                         log("got some data: {}".format(msg['content']))
                         app_name = intent_handler.parse_request(msg['content'])
+                        log("app name = {}".format(app_name))
                         if app_name == None:
                             send(sd, sender, msg_type="data", content="Sorry I'm not sure what you're asking")
                         else:
@@ -162,6 +167,8 @@ def read(sd):
     msg = json.loads(data.decode('utf-8'))
 
     log("received from {}: {}".format(sender, msg))
+    
+    
     return msg, sender
 
 def log(message):
